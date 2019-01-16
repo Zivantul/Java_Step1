@@ -1,0 +1,86 @@
+import java.util.Scanner;
+
+public class Main {
+
+    /*
+2 * Создать массив из слов String[] words = {"apple", "orange", "lemon", "banana", "apricot", "avocado", "broccoli", "carrot", "cherry", "garlic", "grape", "melon", "leak", "kiwi", "mango", "mushroom", "nut", "olive", "pea", "peanut", "pear", "pepper", "pineapple", "pumpkin", "potato"};
+
+При запуске программы компьютер загадывает слово, запрашивает ответ у пользователя,
+сравнивает его с загаданным словом и сообщает правильно ли ответил пользователь. Если слово не угадано, компьютер показывает буквы,
+ которые стоят на своих местах.
+apple – загаданное
+apricot - ответ игрока
+ap############# (15 символов, чтобы пользователь не мог узнать длину слова)
+Для сравнения двух слов посимвольно, можно пользоваться:
+String str = "apple";
+str.charAt(0); - метод, вернет char, который стоит в слове str на первой позиции
+Играем до тех пор, пока игрок не отгадает слово
+Используем только маленькие буквы
+     */
+
+    public static void main(String[] args) {
+	    String [] words = new String[] {"apple", "orange", "lemon", "banana", "apricot", "avocado", "broccoli", "carrot", "cherry", "garlic", "grape", "melon", "leak", "kiwi", "mango", "mushroom", "nut", "olive", "pea", "peanut", "pear", "pepper", "pineapple", "pumpkin", "potato"};
+
+        System.out.println("Давайте сыграем! Программа загадет название фрукта? а Вы угадайте его!");
+
+        String zagad = getWord(words);
+
+        String otvet;
+        String checkOtvet;
+
+
+        do {
+            otvet = getOtvet();
+            checkOtvet = checkOtvet(zagad, otvet);
+        } while (checkOtvet != otvet);
+
+        System.out.println("Поздравляем! Вы угадали фрукт: " + zagad + "!");
+
+    }
+
+    // метод для загадывания слов
+    public static String getWord (String [] words) {
+        int dlinMass = words.length;
+
+        int rndWord = (0 + (int) (Math.random() * dlinMass));
+        String zagad = words[rndWord];
+        return zagad;
+    }
+
+    // метод для взятия ответа пользователя
+    public static String getOtvet () {
+        System.out.println("Введите название фрукта (англ): ");
+        Scanner sc = new Scanner(System.in);
+        String otvet = sc.nextLine();
+        return otvet;
+    }
+
+    //метод для сравнения слов
+    public static String checkOtvet (String zagad, String otvet) {
+        String proverka = "";
+
+        if (zagad.equals(otvet)) {
+            return otvet;
+        } else {
+            int dlinZagad = zagad.length();
+            int dlinOtvet = otvet.length();
+            int dlinCurr = 0;
+
+            if (dlinZagad > dlinOtvet) {
+                dlinCurr = dlinOtvet;
+            } else {
+                dlinCurr = dlinZagad;
+            }
+
+            for (int i = 0; i < dlinCurr; i++) {
+                if (zagad.charAt(i) == otvet.charAt(i)) {
+                    proverka += zagad.charAt(i);
+                } else {
+                    proverka += "#";
+                }
+            }
+            System.out.println("Давайте попробуем еще раз: " + proverka);
+            return proverka;
+        }
+    }
+}
