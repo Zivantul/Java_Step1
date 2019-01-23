@@ -1,0 +1,66 @@
+public class Main {
+
+    /*
+    * Создать класс "Сотрудник" с полями: ФИО, должность, email, телефон, зарплата, возраст;
+    * Конструктор класса должен заполнять эти поля при создании объекта;
+    * Внутри класса «Сотрудник» написать метод, который выводит информацию об объекте в консоль;
+    * Создать массив из 5 сотрудников
+        Пример:
+        Person[] persArray = new Person[5]; // Вначале объявляем массив объектов
+        persArray[0] = new Person("Ivanov Ivan", "Engineer", "ivivan@mailbox.com", "892312312", 30000, 30); // потом для каждой ячейки массива задаем объект
+        persArray[1] = new Person(...);
+        ...
+        persArray[4] = new Person(...);
+    * С помощью цикла вывести информацию только о сотрудниках старше 40 лет;
+     */
+
+
+    public static void main (String[] args) {
+        // создаем массив из объектов Person - класс описан в отдельном файле
+        Person perArr[] = new Person[5];
+
+        // заполняем объекты
+        perArr[0] = new Person ("Ivanov Ivan",
+                            "Engineer",
+                              "ivivan@mailbox.com",
+                          "892312312",
+                            30000,
+                                30);
+
+        perArr[1] = new Person ("Максимов Сергей",
+                "Driver",
+                "macsergey@mailbox.com",
+                "899334415",
+                14000,
+                48);
+
+        perArr[2] = new Person ("Ivanova Anna",
+                "Junior Engineer",
+                "ivanna@mailbox.com",
+                "892312334",
+                21000,
+                24);
+
+        perArr[3] = new Person ("Aleksandrov Mikhail",
+                "Director",
+                "AlexMikhail@mailbox.com",
+                "8923111111",
+                70000,
+                52);
+
+        perArr[4] = new Person ("Anikina Viktoria",
+                "Accounter",
+                "AnikViktoria@mailbox.com",
+                "8991234566",
+                35000,
+                32);
+
+        // цикл для вывода данных только по сотрудникам старше 40 лет
+        for(int i = 0; i < perArr.length; i++){
+            if (perArr[i].age > 40) {
+                perArr[i].PersonPrint();
+            }
+        }
+
+    }
+}
