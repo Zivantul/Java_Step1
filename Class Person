@@ -1,0 +1,22 @@
+public class Person {
+    String fio;
+    String doljnost;
+    String email;
+    String telNumber;
+    int zarplata;
+    int age;
+
+    public Person (String fio, String doljnost, String email, String telNumber, int zarplata, int age) {
+        this.fio = fio;
+        this.doljnost = doljnost;
+        this.email = email;
+        this.telNumber = telNumber;
+        this.zarplata = zarplata;
+        this.age = age;
+    }
+
+    public void PersonPrint (){
+        System.out.println(fio + ", " + doljnost + ", " + email + ", " + telNumber + ", " + zarplata + ", " + age);
+        System.out.println();
+    }
+}
