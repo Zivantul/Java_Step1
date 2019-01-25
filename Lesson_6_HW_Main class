@@ -1,0 +1,20 @@
+package Lesson6_HW;
+
+public class Main {
+    public static void main(String[] args) {
+        Dogs dog1 = new Dogs("dog", "setter");
+        Dogs dog2 = new Dogs("dog", "hound");
+        Cats cat1 = new Cats("cat", "britain");
+        Cats cat2 = new Cats("cat", "sfinx");
+
+        System.out.println(dog1.run(150));
+        System.out.println(cat1.run(300));
+
+        System.out.println(dog2.swim(150));
+        System.out.println(cat2.swim(300));
+
+        System.out.println(dog1.jump(1));
+        System.out.println(cat2.jump(0.4));
+
+    }
+}
