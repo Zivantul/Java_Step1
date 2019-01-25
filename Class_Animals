@@ -1,0 +1,144 @@
+package Lesson6_HW;
+
+public class Animals {
+
+    // задаем константами дистанции и высоту прыжка для разного типа и пород животных
+    public final int CAT_BRITAIN_RUN = 200;
+    public final int CAT_BRITAIN_JUMP = 2;
+    public final int CAT_BRITAIN_SWIM = 1;
+    public final int CAT_SFINX_RUN = 350;
+    public final int CAT_SFINX_JUMP = 3;
+    public final int CAT_SFINX_SWIM = 0;
+
+    public final int DOG_HOUND_RUN = 500;
+    public final double DOG_HOUND_JUMP = 0.5;
+    public final int DOG_HOUND_SWIM = 10;
+    public final int DOG_SETTER_RUN = 150;
+    public final double DOG_SETTER_JUMP = 0.3;
+    public final int DOG_SETTER_SWIM = 1;
+
+
+    protected String typeAnimal;
+    protected  String typeName;
+
+    public Animals(String typeAnimal, String typeName) {
+        this.typeAnimal = typeAnimal;
+        this.typeName = typeName;
+    }
+
+
+    /**
+     * метод определяет максимальную дистанцию/высоту по животному, породе и типу активности
+     * @param typeAnimal - тип животного
+     * @param typeName - наименование породы для вариативности дистанций/высоты
+     * @param typeActivity - тип активности
+     * @return - возврат максимальной дистанции/высоты в формате double, так как высота может быть дробной
+     */
+    private double curMaxDistance (String typeAnimal, String typeName, String typeActivity) {
+        double curMaxDistance = 0;
+
+        if (typeAnimal == "dog") {
+            if (typeName == "hound") {
+                if (typeActivity == "run") {
+                    curMaxDistance = DOG_HOUND_RUN;
+                } else if (typeActivity == "swim") {
+                    curMaxDistance = DOG_HOUND_SWIM;
+                } else if (typeActivity == "jump") {
+                    curMaxDistance = DOG_HOUND_JUMP;
+                }
+            } else if (typeName == "setter") {
+                if (typeActivity == "run") {
+                    curMaxDistance = DOG_SETTER_RUN;
+                } else if (typeActivity == "swim") {
+                    curMaxDistance = DOG_SETTER_SWIM;
+                } else if (typeActivity == "jump") {
+                    curMaxDistance = DOG_SETTER_JUMP;
+                }
+            }
+
+        } else if (typeAnimal == "cat") {
+            if (typeName == "britain") {
+                if (typeActivity == "run") {
+                    curMaxDistance = CAT_BRITAIN_RUN;
+                } else if (typeActivity == "swim") {
+                    curMaxDistance = CAT_BRITAIN_SWIM;
+                } else if (typeActivity == "jump") {
+                    curMaxDistance = CAT_BRITAIN_JUMP;
+                }
+            } else if (typeName == "sfinx") {
+                if (typeActivity == "run") {
+                    curMaxDistance = CAT_SFINX_RUN;
+                } else if (typeActivity == "swim") {
+                    curMaxDistance = CAT_SFINX_SWIM;
+                } else if (typeActivity == "jump") {
+                    curMaxDistance = CAT_SFINX_JUMP;
+                }
+            }
+        }
+
+        return curMaxDistance;
+    }
+
+    /**
+     * Возвращает true or false проверяя тип активности (бег) и попадание в макс дистанцию по животному
+     */
+    public String run (int distance) {
+        boolean acceptance;
+        String typeActivity = "run";
+
+        if (distance > 0 && distance <= curMaxDistance(typeAnimal, typeName, typeActivity)) {
+            acceptance = true;
+        } else {
+            acceptance = false;
+        }
+
+        return (String) (typeActivity + ": " + acceptance);
+    }
+
+    /**
+     * Возвращает true or false проверяя тип активности (плавание) и попадание в макс дистанцию по животному
+     */
+    public String swim (int distance) {
+        boolean acceptance;
+        String typeActivity = "swim";
+
+        if (distance > 0 && distance <= curMaxDistance(typeAnimal, typeName, typeActivity)) {
+            acceptance = true;
+        } else {
+            acceptance = false;
+        }
+
+        return (String) (typeActivity + ": " + acceptance);
+    }
+
+    /**
+     * Возвращает true or false проверяя тип активности (прыжки) и попадание в макс дистанцию по животному
+     */
+    public String jump (double distance) {
+        boolean acceptance;
+        String typeActivity = "jump";
+
+        if (distance > 0 && distance <= curMaxDistance(typeAnimal, typeName, typeActivity)) {
+            acceptance = true;
+        } else {
+            acceptance = false;
+        }
+
+        return (String) (typeActivity + ": " + acceptance);
+    }
+
+}
+
+
+class Dogs extends Animals{
+    public Dogs(String typeAnimal, String typeName) {
+        super(typeAnimal, typeName);
+    }
+}
+
+
+class Cats extends Animals{
+    public Cats(String typeAnimal, String typeName) {
+        super(typeAnimal, typeName);
+    }
+}
