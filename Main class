@@ -1,0 +1,33 @@
+import java.util.Scanner;
+
+public class Main {
+
+    public static void main(String[] args) {
+        Plate pl = new Plate(27);
+
+        Cat cat [] = new Cat[4];
+        cat[0] = new Cat("Barsik", 8, false);
+        cat[1] = new Cat("Murzik", 12, true);
+        cat[2] = new Cat ("Chernish", 20, false);
+        cat[3] = new Cat ("Leshiy", 15, false);
+
+        for (int i = 0; i < cat.length; i++) {
+            if (cat[i].eat(pl)) {
+                System.out.println("Еда в миске закончилась! Добавить еды? 1 - ДА; 2 - НЕТ");
+
+                Scanner sc = new Scanner(System.in);
+                if (sc.nextInt()==1) {
+                    System.out.println("Сколько еды добавить? Коту " + cat[i].getName() +
+                            " не хватает еще кол-ва еды: " + cat[i].getApp(pl));
+                    int am = sc.nextInt();
+                    pl.addFood(am);
+                    i --;
+                } else {
+                    pl.info();
+                }
+            } else {
+                pl.info();
+            }
+        }
+    }
+}
